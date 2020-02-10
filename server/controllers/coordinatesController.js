@@ -22,7 +22,13 @@ export default (req, res, next) => {
             /* Save the coordinates in req.results -> this information will be accessed by listingsController.js to add the coordinates to the Listing to be saved in the database.
               To access the coordinates, you can JSON.parse(body) and find which attribute(s) store some sort of latitude and longitude coordinate pair.
               Make SURE to store in req.results.
-            */
+            */ 
+            let coor = JSON.parse(body);
+            req.results = coor.results[0].geometry;
+            //console.log(req.results);
+
+           
+           
             next();
         });
     } else {

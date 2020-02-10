@@ -23,7 +23,10 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
+
 app.use(bodyParser.json());
+
+
 
 /* serve static files - see http://expressjs.com/en/starter/static-files.html */
 app.use('/', express.static('./../../client'));
@@ -35,7 +38,7 @@ app.use('/', express.static('./../../client'));
    use the listings router middleware for requests to the api
    check the variables list above
 */
-app.use('/api/listings/');
+app.use('/api/listings/', listingsRouter);
 
 
 /* Request Handler for coordinates
@@ -54,7 +57,11 @@ app.all('/*', (req, res) => {
        see https://nodejs.org/api/path.html
        The path.resolve() method returns a string and resolves a sequence of paths or path segments into an absolute path.
        If no path segments are passed, path.resolve() will return the absolute path of the current working directory.
+    
+
+    
     */
+   res.sendFile('C:\Users\Ashley\CEN3031_Bootcamp3.1\client\index.html');
     //res.sendFile(path.resolve(...));
 });
 
